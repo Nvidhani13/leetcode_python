@@ -52,7 +52,30 @@
 # @lc code=start
 class Solution:
     def longestPrefix(self, s: str) -> str:
-        #! This is very famous algo and is also used in knuth mo
+        #! This is very famous algo and is also used in knuth-morris-prath algo 
+        n=len(s)
+        lps=[0]*n
+        i=1
+        length=0
+        while(i<n):
+            if(s[i]==s[length]):
+                length +=1
+                lps[i] = length
+                i+=1
+            else :
+                if(length!=0):
+                    length= lps[length-1] #!!!!!VVVIP 
+                
+                else:
+                    lps[i] =0 
+                    length=0 
+                    i+=1
+        # print(lps)
+        return s[:lps[-1]]
+
+
+
+
         
 # @lc code=end
 
